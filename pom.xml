@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.vn.haitt</groupId>
+	<artifactId>DataEngineer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Data Engineer</name>
+	<description>Root Maven Project</description>
+  
+	<properties>
+		<java.version>17</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<main.basedir>${project.basedir}</main.basedir>
+		<vn.com.haitt.version>0.0.1-SNAPSHOT</vn.com.haitt.version>
+		
+		<!-- Version-->
+		<vn-com-haitt.version>0.0.1-SNAPSHOT</vn-com-haitt.version>
+		<spring-boot.version>3.0.0</spring-boot.version>
+		<springfox-boot-starter.version>3.0.4</springfox-boot-starter.version>
+		<spring-boot-starter-web.version>3.0.4</spring-boot-starter-web.version>
+		<spring-boot-starter-test.version>3.0.4</spring-boot-starter-test.version>
+		<io-swagger-core-v3.version>2.2.8</io-swagger-core-v3.version>
+		<io-swagger.version>1.6.3</io-swagger.version>
+		<org-projectlombok.version>1.18.26</org-projectlombok.version>
+	</properties>
+  
+	<modules>
+		<module>haitt-api</module>
+		<module>haitt-biz</module>
+		<module>haitt-core</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>	
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-parent</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring-boot.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.vn.haitt</groupId>
+				<artifactId>haitt-biz</artifactId>
+				<version>${vn-com-haitt.version}</version>
+			</dependency>
+			<!-- API Specification -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-boot-starter</artifactId>
+				<version>${springfox-boot-starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vn.haitt</groupId>
+				<artifactId>haitt-core</artifactId>
+				<version>${vn-com-haitt.version}</version>
+			</dependency>
+
+			
+
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+    	<!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+		<dependency>
+		    <groupId>io.swagger.core.v3</groupId>
+		    <artifactId>swagger-annotations</artifactId>
+		    <version>${io-swagger-core-v3.version}</version>
+		</dependency>
+			
+        <!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+		<dependency>
+		    <groupId>io.swagger</groupId>
+		    <artifactId>swagger-annotations</artifactId>
+		    <version>${io-swagger.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>${org-projectlombok.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+	
+</project>
